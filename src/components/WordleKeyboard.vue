@@ -115,15 +115,11 @@ function handleKey(key) {
 .keyboard {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--gap);
   padding: 8px 4px;
   /* モバイル対応: キーボードが画面に収まるように */
   max-width: 100%;
   overflow-x: auto;
-  /* モバイルでは小さくする */
-  --key-size-mobile: 32px;
-  --key-size-tablet: 36px;
-  --key-size-desktop: 44px;
 }
 
 .keyboard-disabled {
@@ -134,13 +130,13 @@ function handleKey(key) {
 .keyboard-section {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--gap);
 }
 
 .keyboard-row {
   display: flex;
   justify-content: center;
-  gap: 4px;
+  gap: var(--gap);
   flex-wrap: wrap; /* モバイルで折り返し可能 */
 }
 
@@ -148,21 +144,22 @@ function handleKey(key) {
 .dakuon-wrapper {
   display: flex;
   justify-content: center;
-  gap: 4px;
+  gap: var(--gap);
   align-items: flex-start;
   flex-wrap: wrap; /* モバイル対応 */
+  margin: calc(var(--gap) * 2) 0;
 }
 
 .dakuon-rows {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--gap);
 }
 
 .ctrl-col {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--gap);
   flex-shrink: 0;
 }
 
@@ -201,7 +198,7 @@ function handleKey(key) {
 /* コントロールキー: リセット(2×1) → DEL(2×1) → ENTER(2×3) */
 /* 合計: 44+4+44+4+140 = 236px = 濁音5行の高さ(5×44+4×4) */
 .ctrl-reset {
-  width: 92px;
+  width: calc(92px * var(--scale));
   height: var(--key-size);
   font-size: 0.65rem;
   font-weight: 700;
@@ -209,7 +206,7 @@ function handleKey(key) {
 }
 
 .ctrl-del {
-  width: 92px;
+  width: calc(92px * var(--scale));
   height: var(--key-size);
   font-size: 1.2rem;
   font-weight: 700;
@@ -217,15 +214,15 @@ function handleKey(key) {
 }
 
 .ctrl-enter {
-  width: 92px;
-  height: 92px; /* 44×2 + 4×1 = 92 */
+  width: calc(92px * var(--scale));
+  height: calc(92px * var(--scale)); /* 44×2 + 4×1 = 92 */
   font-size: 0.9rem;
   font-weight: 700;
   background-color: var(--c-key-ctrl);
 }
 
 .ctrl-giveup {
-  width: 92px;
+  width: calc(92px * var(--scale));
   height: var(--key-size);
   font-size: 0.6rem;
   font-weight: 700;
@@ -261,25 +258,24 @@ function handleKey(key) {
 /* モバイル対応: 画面サイズに応じてキーボードサイズを調整 */
 @media (max-width: 480px) {
   .keyboard {
-    --key-size: var(--key-size-mobile);
-    gap: 8px;
+    gap: var(--gap);
     padding: 4px 2px;
   }
 
   .keyboard-row {
-    gap: 2px;
+    gap: var(--gap);
   }
 
   .dakuon-wrapper {
-    gap: 2px;
+    gap: var(--gap);
   }
 
   .dakuon-rows {
-    gap: 2px;
+    gap: var(--gap);
   }
 
   .ctrl-col {
-    gap: 2px;
+    gap: var(--gap);
   }
 
   .key {
@@ -290,41 +286,27 @@ function handleKey(key) {
   .ctrl-del,
   .ctrl-enter,
   .ctrl-giveup {
-    width: 80px;
+    font-size: calc(0.65rem * var(--scale));
+  }
+
+  .ctrl-del {
+    font-size: calc(1.2rem * var(--scale));
   }
 
   .ctrl-enter {
-    height: 80px;
+    font-size: calc(0.9rem * var(--scale));
   }
 
-  .ctrl-reset,
-  .ctrl-del,
   .ctrl-giveup {
-    font-size: 0.55rem;
-  }
-
-  .ctrl-enter {
-    font-size: 0.75rem;
+    font-size: calc(0.6rem * var(--scale));
   }
 
   .token-top {
-    font-size: 0.75rem;
+    font-size: calc(0.85rem * var(--scale));
   }
 
   .token-bot {
-    font-size: 0.65rem;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-  .keyboard {
-    --key-size: var(--key-size-tablet);
-  }
-}
-
-@media (min-width: 769px) {
-  .keyboard {
-    --key-size: var(--key-size-desktop);
+    font-size: calc(0.75rem * var(--scale));
   }
 }
 </style>

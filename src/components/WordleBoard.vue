@@ -43,13 +43,13 @@ function isCurrentRow(rowIndex) {
 .board {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 10px;
+  gap: var(--gap);
+  padding: calc(10px * var(--scale));
 }
 
 .row {
   display: flex;
-  gap: 5px;
+  gap: var(--gap);
 }
 
 .tile {
@@ -60,7 +60,7 @@ function isCurrentRow(rowIndex) {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: calc(1.2rem * var(--scale));
   font-weight: 700;
   color: #1a1a1b;
   transition: transform 0.1s;
@@ -73,13 +73,13 @@ function isCurrentRow(rowIndex) {
 }
 
 .tile-token-top {
-  font-size: 0.85rem;
+  font-size: calc(0.85rem * var(--scale));
   line-height: 1;
   font-weight: 700;
 }
 
 .tile-token-bot {
-  font-size: 0.75rem;
+  font-size: calc(0.75rem * var(--scale));
   line-height: 1;
   font-weight: 700;
 }

@@ -51,8 +51,10 @@
   --c-kbd-text:   #333333;
 
   /* ===== サイズ ===== */
-  --tile-size:  44px;  /* タイル一辺 */
-  --key-size:   44px;  /* キー一辺 */
+  --scale: 1;
+  --tile-size: calc(44px * var(--scale));  /* タイル一辺 */
+  --key-size:  calc(44px * var(--scale));  /* キー一辺 */
+  --gap:       calc(4px * var(--scale));   /* ギャップ */
 
   /* ===== 角丸 ===== */
   --r-sm:  4px;
@@ -62,4 +64,17 @@
 
   /* ===== その他 ===== */
   --max-width: 500px;  /* ゲーム画面最大幅 */
+}
+
+/* モバイル対応: 画面サイズに応じてスケールを調整 */
+@media (max-width: 480px) {
+  :root {
+    --scale: 0.727;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --scale: 0.818;
+  }
 }
