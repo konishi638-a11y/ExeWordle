@@ -117,6 +117,13 @@ function handleKey(key) {
   flex-direction: column;
   gap: 12px;
   padding: 8px 4px;
+  /* モバイル対応: キーボードが画面に収まるように */
+  max-width: 100%;
+  overflow-x: auto;
+  /* モバイルでは小さくする */
+  --key-size-mobile: 32px;
+  --key-size-tablet: 36px;
+  --key-size-desktop: 44px;
 }
 
 .keyboard-disabled {
@@ -134,6 +141,7 @@ function handleKey(key) {
   display: flex;
   justify-content: center;
   gap: 4px;
+  flex-wrap: wrap; /* モバイルで折り返し可能 */
 }
 
 /* 濁音8列 + コントロール2列 を横並び */
@@ -142,6 +150,7 @@ function handleKey(key) {
   justify-content: center;
   gap: 4px;
   align-items: flex-start;
+  flex-wrap: wrap; /* モバイル対応 */
 }
 
 .dakuon-rows {
@@ -175,6 +184,9 @@ function handleKey(key) {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  /* モバイル対応: タッチしやすくする */
+  min-width: 32px;
+  min-height: 32px;
 }
 
 .key:hover { opacity: 0.85; }
@@ -245,6 +257,76 @@ function handleKey(key) {
 .key.correct { background-color: var(--c-correct); }
 .key.present { background-color: var(--c-present); }
 .key.absent  { background-color: var(--c-absent); }
+
+/* モバイル対応: 画面サイズに応じてキーボードサイズを調整 */
+@media (max-width: 480px) {
+  .keyboard {
+    --key-size: var(--key-size-mobile);
+    gap: 8px;
+    padding: 4px 2px;
+  }
+
+  .keyboard-row {
+    gap: 2px;
+  }
+
+  .dakuon-wrapper {
+    gap: 2px;
+  }
+
+  .dakuon-rows {
+    gap: 2px;
+  }
+
+  .ctrl-col {
+    gap: 2px;
+  }
+
+  .key {
+    font-size: 0.9rem;
+  }
+
+  .ctrl-reset,
+  .ctrl-del,
+  .ctrl-enter,
+  .ctrl-giveup {
+    width: 80px;
+  }
+
+  .ctrl-enter {
+    height: 80px;
+  }
+
+  .ctrl-reset,
+  .ctrl-del,
+  .ctrl-giveup {
+    font-size: 0.55rem;
+  }
+
+  .ctrl-enter {
+    font-size: 0.75rem;
+  }
+
+  .token-top {
+    font-size: 0.75rem;
+  }
+
+  .token-bot {
+    font-size: 0.65rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .keyboard {
+    --key-size: var(--key-size-tablet);
+  }
+}
+
+@media (min-width: 769px) {
+  .keyboard {
+    --key-size: var(--key-size-desktop);
+  }
+}
 </style>
 
 

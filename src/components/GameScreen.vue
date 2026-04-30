@@ -217,6 +217,9 @@ onUnmounted(() => window.removeEventListener('keydown', handlePhysicalKey))
   width: 100%;
   max-width: var(--max-width);
   padding: 16px 8px;
+  /* モバイル対応: キーボードが隠れないように */
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .header {
