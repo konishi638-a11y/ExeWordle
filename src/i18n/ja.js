@@ -81,6 +81,7 @@ export const ja = {
   // ツイートテキスト
   tweet: {
     urlBase: 'https://twitter.com/intent/tweet',
+    url: 'https://konishi638-a11y.github.io/ExeWordle/',
     hashtag: '#Wordleの電脳',
     resultWon: '成功！',
     resultLost: '失敗',

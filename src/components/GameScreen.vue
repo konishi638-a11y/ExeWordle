@@ -177,7 +177,7 @@ const tweetUrl = computed(() => {
     return tiles.join('')
   })
   const grid = playedRows.join('\n')
-  const text = `${t.tweet.hashtag}\n${modeLabel} ${result} (${triesStr}${streakPart})\n${grid}`
+  const text = `${t.tweet.hashtag}\n${modeLabel} ${result} (${triesStr}${streakPart})\n${grid}\n${t.tweet.url}`
   return `${t.tweet.urlBase}?text=${encodeURIComponent(text)}`
 })
 
